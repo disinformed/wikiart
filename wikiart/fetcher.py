@@ -114,7 +114,7 @@ class WikiArtFetcher:
             raise RuntimeError('No artists defined. Cannot continue.')
 
         self.painting_groups = []
-        show_progress_at = int(.1 * len(self.artists))
+        show_progress_at = max(int(.1 * len(self.artists)), 1)
 
         # Retrieve paintings' metadata for every artist.
         for i, artist in enumerate(self.artists):
@@ -189,7 +189,7 @@ class WikiArtFetcher:
         if not self.painting_groups:
             raise RuntimeError('Painting groups not found. Cannot continue.')
 
-        progress_interval = int(.1 * len(self.painting_groups))
+        progress_interval = max(int(.1 * len(self.painting_groups)), 1)
 
         # Retrieve copies of every artist's painting.
         for i, group in enumerate(self.painting_groups):
